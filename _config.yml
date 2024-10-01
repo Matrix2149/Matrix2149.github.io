@@ -48,7 +48,7 @@ author:
     - name: vk
       url:
 home:
-  section1: <h1>ThinkTang's Blog</h1>
+  section1: <h1>ThinkTail's Blog</h1>
   section2: <h2>Numerical modeling, simulation of the world</h2>
   section3: <div class="social-links"><a class="ico-github btn" href="https://matrix2149.github.io/blog/" title="View on GitHub"></a></div>
 blog:

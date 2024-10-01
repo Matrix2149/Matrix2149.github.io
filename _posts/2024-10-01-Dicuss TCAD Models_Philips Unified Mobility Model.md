@@ -17,7 +17,7 @@ Philips unified mobility model或者说Klaassen mobility model，是TCAD仿真�
 $\frac{1}{\mu_{i, b}} = \frac{1}{\mu_{i, L}}+\frac{1}{\mu_{i, DAeh}} \tag 1$
 
 后三种库伦散射统一在（1）右边的第二项，第一项是晶格散射。
-就迁移率来说，除开材料本身的晶体结构影响，就三种因素决定：$\mu(N,T,E)$。这模型一出，基本就把N和T的作用全囊括了。
+就迁移率来说，除开材料本身的晶体结构影响，就三种因素决定：$\mu(N,T,E)$。这模型一出，基本就把杂质浓度和温度的作用全囊括了。
 
 # 精髓
 ## 如何unify
@@ -28,7 +28,7 @@ $\mu_{i,\text{ DAeh }}= \mu_{i, N}\Bigg(\frac{N_{i, \text{sc}}}{N_{i, \text{sc,e
 
 $\begin{cases}
 N_{\mathrm{e,sc,eff}}=N_{\mathrm{D}}+G(P_{\mathrm{e}})N_{\mathrm{A}}+\frac p{F(P_{\mathrm{e}})}
-\\ N_{\mathrm{h,sc,eff}}=N_{\mathrm{A}}+G(P_{\mathrm{h}})N_{\mathrm{D}}+\frac n{F(P_{\mathrm{h}})}
+\\\\ N_{\mathrm{h,sc,eff}}=N_{\mathrm{A}}+G(P_{\mathrm{h}})N_{\mathrm{D}}+\frac n{F(P_{\mathrm{h}})}
 \end{cases}
  \tag3$
 
