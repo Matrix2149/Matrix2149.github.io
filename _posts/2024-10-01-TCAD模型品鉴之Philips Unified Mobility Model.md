@@ -13,7 +13,8 @@ Philips unified mobility model或者说Klaassen mobility model，是TCAD仿真�
 - 多数杂质散射(majority impurity)
 - 少数杂质散射(minority impurity)
 - 电子空穴散射(electron-hole)
-$$\frac{1}{\mu_{i, b}} = \frac{1}{\mu_{i, L}}+\frac{1}{\mu_{i, DAeh}} \tag 1 $$
+
+$\frac{1}{\mu_{i, b}} = \frac{1}{\mu_{i, L}}+\frac{1}{\mu_{i, DAeh}} \tag 1$
 
 后三种库伦散射统一在（1）右边的第二项，第一项是晶格散射。
 就迁移率来说，除开材料本身的晶体结构影响，就三种因素决定：$\mu(N,T,E)$。这模型一出，基本就把N和T的作用全囊括了。
@@ -21,25 +22,28 @@ $$\frac{1}{\mu_{i, b}} = \frac{1}{\mu_{i, L}}+\frac{1}{\mu_{i, DAeh}} \tag 1 $$
 # 精髓
 ## 如何unify
 Klaassen model的精髓在于它对三种库伦散射的统一，而且统一在对应散射粒子的浓度上。既保证足够精确，又在公式上实现了物理的直观。
-$$
-\mu_{i,\text{ DAeh }}= \mu_{i, N}\Bigg(\frac{N_{i, \text{sc}}}{N_{i, \text{sc,eff}}}\Bigg)\Bigg(\frac{N_{i, \text{ref}}}{N_{i,\text{sc}}}\Bigg)^{\alpha_i} 
-+\mu_{i, \text{c}}\Bigg(\frac{n+p}{N_{i, \text{sc,eff}}}\Bigg) \tag2 
-$$
 
-$$
-\begin{cases}
- N_{\mathrm{e,sc,eff}}=N_{\mathrm{D}}+G(P_{\mathrm{e}})N_{\mathrm{A}}+\frac p{F(P_{\mathrm{e}})}
-\\N_{\mathrm{h,sc,eff}}=N_{\mathrm{A}}+G(P_{\mathrm{h}})N_{\mathrm{D}}+\frac n{F(P_{\mathrm{h}})}
+$\mu_{i,\text{ DAeh }}= \mu_{i, N}\Bigg(\frac{N_{i, \text{sc}}}{N_{i, \text{sc,eff}}}\Bigg)\Bigg(\frac{N_{i, \text{ref}}}{N_{i,\text{sc}}}\Bigg)^{\alpha_i} 
++\mu_{i, \text{c}}\Bigg(\frac{n+p}{N_{i, \text{sc,eff}}}\Bigg) \tag2 $
+
+$\begin{cases}
+N_{\mathrm{e,sc,eff}}=N_{\mathrm{D}}+G(P_{\mathrm{e}})N_{\mathrm{A}}+\frac p{F(P_{\mathrm{e}})}
+\\ N_{\mathrm{h,sc,eff}}=N_{\mathrm{A}}+G(P_{\mathrm{h}})N_{\mathrm{D}}+\frac n{F(P_{\mathrm{h}})}
 \end{cases}
- \tag3$$
+ \tag3$
+
 unify最关键的就是(3)算的这个$N_{i,sc,eff}$，从脚标可以称之为有效散射浓度。公式右边，从左到右分别对应多数杂质散射、少数杂质散射和电子空穴散射。多数杂质散射直接取材于半经验公式，重要的是后两种散射通过$G$和$F$两个迁移率之比获得了相同的形式，这就很妙。
-$$\mu_{\mathbf{e},\mathbf{A}}(N_\mathbf{A},c)=\frac{\mu_{\mathbf{e},\mathbf{D}}(N_\mathbf{D}=N_\mathbf{A},c)}{G(P_\mathbf{e})} \tag4$$
-$$\mu_{\mathrm{e.h}}(p,c)=F(P_e)\mu_{\mathrm{e.D}}(N_D=p,c) \tag5$$
+$\mu_{\mathbf{e},\mathbf{A}}(N_\mathbf{A},c)=\frac{\mu_{\mathbf{e},\mathbf{D}}(N_\mathbf{D}=N_\mathbf{A},c)}{G(P_\mathbf{e})} \tag4$
+$\mu_{\mathrm{e.h}}(p,c)=F(P_e)\mu_{\mathrm{e.D}}(N_D=p,c) \tag5$
+
 这里只写电子迁移率了，空穴换一下符号就行。
+
 可以看到(4)(5)有相同的项，用Matthiessen Rule合起来算迁移率就是：
-$$\frac{1}{\mu_{i,\text{ DAeh }}}=\frac{1}{\mu_{e,D}(N_D)}+\frac{G(P_e)}{\mu_{e,D}(N_A)}+\frac{1}{F(P_e)\mu_{e,D}(p)} \tag6$$
+$\frac{1}{\mu_{i,\text{ DAeh }}}=\frac{1}{\mu_{e,D}(N_D)}+\frac{G(P_e)}{\mu_{e,D}(N_A)}+\frac{1}{F(P_e)\mu_{e,D}(p)} \tag6$
+
 所以算$\mu_{i,DAeh}$只需要带入$\mu_{e,D}$的公式。这个公式第一篇论文的第2.2节，Klaassen采用的是基于Caughey-Thomas半经验公式的改进版：
-$$\mu_{i,I}(N_i)=\mu_{i,N}\left(\frac{N_{\mathrm{ref,1}}}{N_i}\right)^{x_1}+\mu_{i,c}\left(\frac{c}{N_i}\right) \tag7$$
+$\mu_{i,I}(N_i)=\mu_{i,N}\left(\frac{N_{\mathrm{ref,1}}}{N_i}\right)^{x_1}+\mu_{i,c}\left(\frac{c}{N_i}\right) \tag7$
+
 他把$\mu_{i,c}$这一项乘上了个$c/N_i$，采用的是Ridley统计屏蔽理论，主要考虑高掺杂下的屏蔽作用使得散射没那么多。
 
 (7)已经能看到(2)的框架了，但是把(7)带入(6)还直接得不到(2)，会发现$N_D, G*N_A, p/F$三者之间是一种比较复杂的数学关系，远不像(3)那么赏心悦目。我推了很长时间也没想出来从理论上怎么得到(3)，只能解释为Klaassen做了近似。
