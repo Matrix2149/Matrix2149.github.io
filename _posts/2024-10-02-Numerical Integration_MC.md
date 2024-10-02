@@ -25,7 +25,6 @@ $A_{k}=\int_{a}^{b}l_{k}(x)\mathrm{d}x=\int_{0}^{n}\prod_{j=0,j\neq k}^{n}(\frac
 
 > 定理：当n是奇数时, Newton-Cotes公式至少具有n次代数精度。当n是偶数时, Newton-Cotes公式至少具有n+1次代数精度。
 
-<blockquote class="green">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</blockquote> 
 
 令
 
